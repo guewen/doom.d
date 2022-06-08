@@ -74,3 +74,38 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+
+;;;###autoload
+(defun yank-buffer-path-with-line-number (&optional root)
+  "Copy the current buffer's path to the kill ring."
+  (interactive)
+  (if-let (filename (or (buffer-file-name (buffer-base-buffer))
+                        (bound-and-true-p list-buffers-directory)))
+      (message "Copied path to clipboard: %s"
+               (kill-new (concat
+                          (abbreviate-file-name
+                          (if root
+                              (file-relative-name filename root)
+                            filename))
+                         ":"
+                         (number-to-string (line-number-at-pos))
+                        )
+                ))
+    (error "Couldn't find filename in current buffer")))
+
+;;;###autoload
+(defun yank-buffer-path-with-line-number-relative-to-project (&optional include-root)
+  "Copy the current buffer's path to the kill ring.
+With non-nil prefix INCLUDE-ROOT, also include the project's root."
+  (interactive "P")
+  (yank-buffer-path-with-line-number
+   (if include-root
+       (file-name-directory (directory-file-name (doom-project-root)))
+     (doom-project-root))))
+
+(map! :leader
+      (:prefix-map ("f" . "file")
+       :desc "Yank file path with line number"              "g" #'yank-buffer-path-with-line-number
+       :desc "Yank file path with line number from project" "G" #'yank-buffer-path-with-line-number-relative-to-project
+       ))
