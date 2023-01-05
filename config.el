@@ -114,3 +114,9 @@ With non-nil prefix INCLUDE-ROOT, also include the project's root."
 (after! (jsonian flycheck) (jsonian-enable-flycheck))
 ;; To diasable so-long mode overrides
 (after! (jsonian so-long) (jsonian-no-so-long-mode))
+
+;; open anonymous emacsclient sessions in the main workspace,
+;; prevent opening many workspaces
+;; https://github.com/doomemacs/doomemacs/issues/1949
+(after! persp-mode
+  (setq persp-emacsclient-init-frame-behaviour-override "main"))
