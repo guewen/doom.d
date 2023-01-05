@@ -109,3 +109,8 @@ With non-nil prefix INCLUDE-ROOT, also include the project's root."
        :desc "Yank file path with line number"              "g" #'yank-buffer-path-with-line-number
        :desc "Yank file path with line number from project" "G" #'yank-buffer-path-with-line-number-relative-to-project
        ))
+
+;; To enable jsonian to work with flycheck
+(after! (jsonian flycheck) (jsonian-enable-flycheck))
+;; To diasable so-long mode overrides
+(after! (jsonian so-long) (jsonian-no-so-long-mode))
