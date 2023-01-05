@@ -49,6 +49,9 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+(package! rbs-mode)
+(package! verb)
+
 ;; Replace json-mode by jsonian
 (package! jsonian :recipe (:host github :repo "iwahbe/jsonian"))
 (package! json-mode :disable t)
