@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: changelog
+# uuid:
+# key: ch
+# condition: t
+# --
+
+[QO-$1](https://qoqach.atlassian.net/browse/QO-$1) $0
