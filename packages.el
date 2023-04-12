@@ -56,6 +56,9 @@
 (package! jsonian :recipe (:host github :repo "iwahbe/jsonian"))
 (package! json-mode :disable t)
 
+(package! keychain-environment)
+(keychain-refresh-environment)
+
 (package! copilot
   :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
 
