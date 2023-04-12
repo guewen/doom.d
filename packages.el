@@ -55,3 +55,9 @@
 ;; Replace json-mode by jsonian
 (package! jsonian :recipe (:host github :repo "iwahbe/jsonian"))
 (package! json-mode :disable t)
+
+(package! copilot
+  :recipe (:host github :repo "zerolfx/copilot.el" :files ("*.el" "dist")))
+
+;; enable copilot completion only in insert evil mode
+(customize-set-variable 'copilot-enable-predicates '(evil-insert-state-p))

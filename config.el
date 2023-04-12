@@ -120,3 +120,17 @@ With non-nil prefix INCLUDE-ROOT, also include the project's root."
 ;; https://github.com/doomemacs/doomemacs/issues/1949
 (after! persp-mode
   (setq persp-emacsclient-init-frame-behaviour-override "main"))
+
+
+(after! avy
+  ;; home row priorities: 8 6 4 5 - - 1 2 3 7
+  (setq avy-keys '(?a ?o ?e ?u ?i ?d ?h ?t ?n ?s)))
+
+;; accept completion from copilot and fallback to company
+(use-package! copilot
+  :hook (prog-mode . copilot-mode)
+  :bind (("C-TAB" . 'copilot-accept-completion-by-word)
+         ("C-<tab>" . 'copilot-accept-completion-by-word)
+         :map copilot-completion-map
+         ("<tab>" . 'copilot-accept-completion)
+         ("TAB" . 'copilot-accept-completion)))
