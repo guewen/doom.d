@@ -134,3 +134,5 @@ With non-nil prefix INCLUDE-ROOT, also include the project's root."
          :map copilot-completion-map
          ("<tab>" . 'copilot-accept-completion)
          ("TAB" . 'copilot-accept-completion)))
+
+(keychain-refresh-environment)
