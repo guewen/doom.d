@@ -5,4 +5,4 @@
 # condition: t
 # --
 
-[QO-$1](https://qoqach.atlassian.net/browse/QO-$1) $0
+[${1:`(upcase (file-name-nondirectory (file-name-sans-extension (buffer-file-name))))`}](https://qoqach.atlassian.net/browse/$1) $0
